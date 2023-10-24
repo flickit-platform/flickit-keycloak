@@ -2,8 +2,8 @@ name: flickit-keycloak ci-cd
 
 on:
   push:
-    branches:
-      - "main"
+    branches: ['main']
+    paths: ['.github/workflows/**', 'docker-context/**']
 
 permissions:
   contents: write
@@ -52,6 +52,6 @@ jobs:
     steps:
       - name: darkube-cli deploy
         run: |
-          darkube deploy --token ${DEPLOY_TOKEN_KEYCLOAK_TEST_FLICKIT_TEST_HAMRAVESH_C13}
-          --app-id ${APP_ID_KEYCLOAK_TEST_FLICKIT_TEST_HAMRAVESH_C13} --image-tag ${GITHUB_SHA:0:7}
+          darkube deploy --token ${{secrets.DEPLOY_TOKEN_KEYCLOAK_TEST_FLICKIT_TEST_HAMRAVESH_C13}}
+          --app-id ${{secrets.APP_ID_KEYCLOAK_TEST_FLICKIT_TEST_HAMRAVESH_C13}} --image-tag ${GITHUB_SHA:0:7}
           --job-id ${GITHUB_RUN_ID}
