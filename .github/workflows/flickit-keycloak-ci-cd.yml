@@ -48,7 +48,7 @@ jobs:
         . --file ./Dockerfile --build-context . '
   darkube_deploy_keycloak-test:
     container: hamravesh/darkube-cli:v1.1
-    needs: darkube_build_keycloak-test_flickit-test_hamravesh-c13
+    needs: darkube_build_keycloak-test
     runs-on: ubuntu-latest
     steps:
       - name: darkube-cli deploy
