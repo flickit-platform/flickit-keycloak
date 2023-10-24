@@ -50,5 +50,5 @@ jobs:
         run: |
           darkube deploy --token ${{ secrets.DEPLOY_TOKEN_KEYCLOAK_TEST_FLICKIT_TEST_HAMRAVESH_C13}}
           --app-id ${{ secrets.APP_ID_KEYCLOAK_TEST_FLICKIT_TEST_HAMRAVESH_C13 }} --image-tag ${GITHUB_SHA::7}
-          --job-id ${{github.run_id}}
+          --job-id ${GITHUB_RUN_ID}
       
