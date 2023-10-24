@@ -8,7 +8,7 @@ on:
 
 
 jobs:
-  build-push-deploy-image:
+  build-push-image:
     runs-on: ubuntu-latest
 
     permissions:
@@ -41,13 +41,16 @@ jobs:
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
 
+  darkube_deploy_keycloak-test:
+    container: hamravesh/darkube-cli:v1.1
+    needs: build-push-image
+    runs-on: ubuntu-latest
+    steps:
+      - uses: benjlevesque/short-sha@v2.2
+        id: short-sha
       - name: darkube-cli deploy
         run: |
-          echo "${{ secrets.DEPLOY_TOKEN_KEYCLOAK_TEST_FLICKIT_TEST_HAMRAVESH_C13}}"
-          echo "${{ secrets.APP_ID_KEYCLOAK_TEST_FLICKIT_TEST_HAMRAVESH_C13 }}"
-          echo "${{ steps.meta.outputs.tags }}"
-          curl -X PUT 'https://api.console.hamravesh.ir/api/v1/darkube/apps/update_from_cli/' 
-          -H 'Content-Type: application/json' 
-          -d '{"trigger_deploy_token": "${{ secrets.DEPLOY_TOKEN_KEYCLOAK_TEST_FLICKIT_TEST_HAMRAVESH_C13}}",
-          "app_id": "${{ secrets.APP_ID_KEYCLOAK_TEST_FLICKIT_TEST_HAMRAVESH_C13 }}", "image_tag": "${{ steps.meta.outputs.tags }}"}'
+          darkube deploy --token ${{ secrets.DEPLOY_TOKEN_KEYCLOAK_TEST_FLICKIT_TEST_HAMRAVESH_C13}}
+          --app-id ${{ secrets.APP_ID_KEYCLOAK_TEST_FLICKIT_TEST_HAMRAVESH_C13 }} --image-tag ${{steps.short-sha.outputs.sha}}
+          --job-id ${{github.run_id}}
       
