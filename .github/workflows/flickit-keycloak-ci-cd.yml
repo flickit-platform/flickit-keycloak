@@ -1,4 +1,4 @@
-name: flickit-keycloak ci
+name: flickit-keycloak ci-cd
 
 on:
   push:
@@ -12,7 +12,7 @@ permissions:
   packages: write
 
 jobs:
-  docker:
+  build_and_push_image_to_ghcr:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
