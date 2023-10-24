@@ -9,7 +9,6 @@ on:
 
 jobs:
   build-push-deploy-image:
-    container: hamravesh/darkube-cli:v1.1
     runs-on: ubuntu-latest
 
     permissions:
@@ -44,7 +43,8 @@ jobs:
 
       - name: darkube-cli deploy
         run: |
-          darkube deploy --token ${{ secrets.DEPLOY_TOKEN_KEYCLOAK_TEST_FLICKIT_TEST_HAMRAVESH_C13 }}
-          --app-id ${{ secrets.APP_ID_KEYCLOAK_TEST_FLICKIT_TEST_HAMRAVESH_C13 }} --image-tag ${{ steps.meta.outputs.tags }}
-          --job-id ${{github.run_id}}
+          curl -X PUT 'https://api.console.hamravesh.ir/api/v1/darkube/apps/update_from_cli/' 
+          -H 'Content-Type: application/json' 
+          -d '{"trigger_deploy_token": "${{ secrets.DEPLOY_TOKEN_KEYCLOAK_TEST_FLICKIT_TEST_HAMRAVESH_C13}}",
+          "app_id": "${{ secrets.APP_ID_KEYCLOAK_TEST_FLICKIT_TEST_HAMRAVESH_C13 }}", "image_tag": "${{ steps.meta.outputs.tags }}"}'
       
