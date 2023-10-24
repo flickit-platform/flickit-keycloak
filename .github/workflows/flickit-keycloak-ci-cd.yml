@@ -42,10 +42,8 @@ jobs:
     needs: build_and_push_image_to_ghcr
     runs-on: ubuntu-latest
     steps:
-      - uses: benjlevesque/short-sha@v2.2
-        id: short-sha
       - name: darkube-cli deploy
         run: |
           darkube deploy --token ${{ secrets.DEPLOY_TOKEN_KEYCLOAK_TEST_FLICKIT_TEST_HAMRAVESH_C13 }}
-          --app-id ${{ secrets.APP_ID_KEYCLOAK_TEST_FLICKIT_TEST_HAMRAVESH_C13 }} --image-tag ${{ env.SHA }}}
+          --app-id ${{ secrets.APP_ID_KEYCLOAK_TEST_FLICKIT_TEST_HAMRAVESH_C13 }} --image-tag ${{needs.build_and_push_image_to_ghcr.outputs.sha}}
           --job-id ${{github.run_id}}
