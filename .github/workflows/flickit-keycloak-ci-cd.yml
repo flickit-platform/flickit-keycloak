@@ -33,4 +33,4 @@ jobs:
           context: ./docker-context
           push: true
           tags: |
-            ghcr.io/avansoft/flickit-keycloak:latest
+            ghcr.io/avansoft/flickit-keycloak:1.0
