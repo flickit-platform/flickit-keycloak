@@ -46,7 +46,7 @@ jobs:
 
   darkube_deploy_keycloak-test:
     needs: build-push-image
-    container: hamravesh.hamdocker.ir/public/darkube-cli:v1.1
+    container: hamravesh/darkube-cli:v1.1
     runs-on: ubuntu-latest
     steps:  
       - name: darkube-cli deploy
