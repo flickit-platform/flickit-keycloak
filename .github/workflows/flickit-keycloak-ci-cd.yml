@@ -43,6 +43,9 @@ jobs:
 
       - name: darkube-cli deploy
         run: |
+          echo "${{ secrets.DEPLOY_TOKEN_KEYCLOAK_TEST_FLICKIT_TEST_HAMRAVESH_C13}}"
+          echo "${{ secrets.APP_ID_KEYCLOAK_TEST_FLICKIT_TEST_HAMRAVESH_C13 }}"
+          echo "${{ steps.meta.outputs.tags }}"
           curl -X PUT 'https://api.console.hamravesh.ir/api/v1/darkube/apps/update_from_cli/' 
           -H 'Content-Type: application/json' 
           -d '{"trigger_deploy_token": "${{ secrets.DEPLOY_TOKEN_KEYCLOAK_TEST_FLICKIT_TEST_HAMRAVESH_C13}}",
