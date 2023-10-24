@@ -45,12 +45,10 @@ jobs:
     container: hamravesh/darkube-cli:v1.1
     needs: build-push-image
     runs-on: ubuntu-latest
-    steps:
-      - uses: benjlevesque/short-sha@v2.2
-        id: short-sha
+    steps:  
       - name: darkube-cli deploy
         run: |
           darkube deploy --token ${{ secrets.DEPLOY_TOKEN_KEYCLOAK_TEST_FLICKIT_TEST_HAMRAVESH_C13}}
-          --app-id ${{ secrets.APP_ID_KEYCLOAK_TEST_FLICKIT_TEST_HAMRAVESH_C13 }} --image-tag ${{steps.short-sha.outputs.sha}}
+          --app-id ${{ secrets.APP_ID_KEYCLOAK_TEST_FLICKIT_TEST_HAMRAVESH_C13 }} --image-tag ${GITHUB_SHA::7}
           --job-id ${{github.run_id}}
       
