@@ -48,7 +48,9 @@ jobs:
     steps:  
       - name: darkube-cli deploy
         run: |
+          echo ${{github.sha::7}}
+          echo ${{github.run_id}}
           darkube deploy --token ${{ secrets.DEPLOY_TOKEN_KEYCLOAK_TEST_FLICKIT_TEST_HAMRAVESH_C13}}
-          --app-id ${{ secrets.APP_ID_KEYCLOAK_TEST_FLICKIT_TEST_HAMRAVESH_C13 }} --image-tag ${GITHUB_SHA::7}
-          --job-id ${GITHUB_RUN_ID}
+          --app-id ${{ secrets.APP_ID_KEYCLOAK_TEST_FLICKIT_TEST_HAMRAVESH_C13 }} --image-tag ${{github.sha::7}}
+          --job-id ${{github.run_id}}
       
