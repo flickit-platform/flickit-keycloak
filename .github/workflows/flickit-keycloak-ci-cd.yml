@@ -42,18 +42,16 @@ jobs:
       - env:
           IMAGE_NAME: ghcr.io/avansoft/flickit-keycloak
         name: darkube-cli build & push
-        run: ' |
-
-        darkube build --push -t $IMAGE_NAME:${GITHUB_SHA:0:7} -t $IMAGE_NAME:${GITHUB_REF_NAME}--workdir
-        . --file ./Dockerfile --build-context . '
+        run: |
+          darkube build --push -t $IMAGE_NAME:${GITHUB_SHA:0:7} -t $IMAGE_NAME:${GITHUB_REF_NAME}--workdir 
+          . --file ./Dockerfile --build-context .
   darkube_deploy_keycloak-test:
     container: hamravesh/darkube-cli:v1.1
     needs: darkube_build_keycloak-test
     runs-on: ubuntu-latest
     steps:
       - name: darkube-cli deploy
-        run: ' |
-
-        darkube deploy --token ${DEPLOY_TOKEN_KEYCLOAK_TEST_FLICKIT_TEST_HAMRAVESH_C13}
-        --app-id ${APP_ID_KEYCLOAK_TEST_FLICKIT_TEST_HAMRAVESH_C13} --image-tag ${GITHUB_SHA:0:7}
-        --job-id ${GITHUB_RUN_ID}'
+        run: |
+          darkube deploy --token ${DEPLOY_TOKEN_KEYCLOAK_TEST_FLICKIT_TEST_HAMRAVESH_C13}
+          --app-id ${APP_ID_KEYCLOAK_TEST_FLICKIT_TEST_HAMRAVESH_C13} --image-tag ${GITHUB_SHA:0:7}
+          --job-id ${GITHUB_RUN_ID}
