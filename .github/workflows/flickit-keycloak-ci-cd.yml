@@ -2,10 +2,8 @@ name: flickit-keycloak ci-cd
 
 on:
   push:
-    branches: ['main']
-    paths: ['.github/workflows/**', 'docker-context/**']
-
-
+    tags:
+      - "v*.*"
 
 jobs:
   build-push-image:
@@ -32,6 +30,9 @@ jobs:
         uses: docker/metadata-action@9ec57ed1fcdbf14dcef7dfbe97b2010124a938b7
         with:
           images: ghcr.io/avansoft/flickit-keycloak
+          tags: |
+            type=ref,event=branch
+            type=ref,event=pr
       
       - name: Build and push
         uses: docker/build-push-action@v5
@@ -47,10 +48,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:  
       - name: darkube-cli deploy
-        run: |
-          echo ${{github.sha::7}}
-          echo ${{github.run_id}}
+        run: |          
           darkube deploy --token ${{ secrets.DEPLOY_TOKEN_KEYCLOAK_TEST_FLICKIT_TEST_HAMRAVESH_C13}}
-          --app-id ${{ secrets.APP_ID_KEYCLOAK_TEST_FLICKIT_TEST_HAMRAVESH_C13 }} --image-tag ${{github.sha::7}}
+          --app-id ${{ secrets.APP_ID_KEYCLOAK_TEST_FLICKIT_TEST_HAMRAVESH_C13 }} --image-tag ${{github.ref_name}}
           --job-id ${{github.run_id}}
       
