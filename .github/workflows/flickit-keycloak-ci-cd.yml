@@ -46,12 +46,13 @@ jobs:
 
   darkube_deploy_keycloak-test:
     needs: build-push-image
-    container: hamravesh/darkube-cli:v1.1
+    container: hamravesh.hamdocker.ir/public/darkube-cli:v1.1
     runs-on: ubuntu-latest
     steps:  
       - name: darkube-cli deploy
-        run: |          
-          darkube deploy --token ${{ secrets.DEPLOY_TOKEN_KEYCLOAK_TEST_FLICKIT_TEST_HAMRAVESH_C13}}
-          --app-id ${{ secrets.APP_ID_KEYCLOAK_TEST_FLICKIT_TEST_HAMRAVESH_C13 }} --image-tag ${{needs.build-push-image.outputs.TAG}}
-          --job-id ${{github.run_id}}
+        run: darkube deploy --ref main --token ${DARKUBE_DEPLOY_TOKEN} --app-id ${DARKUBE_APP_ID}  --image-tag "${TAG}" --job-id "$GITHUB_RUN_ID" --stateless-app true
+        env:
+          DARKUBE_DEPLOY_TOKEN: ${{ secrets.DEPLOY_TOKEN_KEYCLOAK_TEST_FLICKIT_TEST_HAMRAVESH_C13}}
+          DARKUBE_APP_ID: ${{ secrets.APP_ID_KEYCLOAK_TEST_FLICKIT_TEST_HAMRAVESH_C13 }}
+          TAG: ${{needs.build-push-image.outputs.TAG}}
       
