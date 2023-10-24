@@ -3,12 +3,13 @@ name: flickit-keycloak ci-cd
 on:
   push:
     tags:
-      - "v*.*"
+      - "v*"
 
 jobs:
   build-push-image:
     runs-on: ubuntu-latest
-
+    outputs:
+      TAG: ${{ steps.TAG.outputs.tag }}
     permissions:
       contents: read
       packages: write
@@ -17,6 +18,10 @@ jobs:
     
       - name: Checkout
         uses: actions/checkout@v4
+
+      - name: Set output
+        id: TAG
+        run: echo "tag=${GITHUB_REF#refs/*/}" >> $GITHUB_OUTPUT
 
       - name: Login to GitHub Container Registry
         uses: docker/login-action@v3
@@ -27,13 +32,10 @@ jobs:
 
       - name: Extract metadata (tags, labels) for Docker
         id: meta
-        uses: docker/metadata-action@9ec57ed1fcdbf14dcef7dfbe97b2010124a938b7
+        uses: docker/metadata-action@v5
         with:
           images: ghcr.io/avansoft/flickit-keycloak
-          tags: |
-            type=ref,event=branch
-            type=ref,event=pr
-      
+         
       - name: Build and push
         uses: docker/build-push-action@v5
         with:
@@ -43,13 +45,13 @@ jobs:
           labels: ${{ steps.meta.outputs.labels }}
 
   darkube_deploy_keycloak-test:
-    container: hamravesh/darkube-cli:v1.1
     needs: build-push-image
+    container: hamravesh/darkube-cli:v1.1
     runs-on: ubuntu-latest
     steps:  
       - name: darkube-cli deploy
         run: |          
           darkube deploy --token ${{ secrets.DEPLOY_TOKEN_KEYCLOAK_TEST_FLICKIT_TEST_HAMRAVESH_C13}}
-          --app-id ${{ secrets.APP_ID_KEYCLOAK_TEST_FLICKIT_TEST_HAMRAVESH_C13 }} --image-tag ${{github.ref_name}}
+          --app-id ${{ secrets.APP_ID_KEYCLOAK_TEST_FLICKIT_TEST_HAMRAVESH_C13 }} --image-tag ${{needs.build-push-image.outputs.TAG}}
           --job-id ${{github.run_id}}
       
