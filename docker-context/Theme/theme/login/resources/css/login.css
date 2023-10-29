@@ -46,6 +46,17 @@ p.instruction {
   text-transform: uppercase;
 }
 
+input#kc-login {
+  border: solid var(--pf-global--BorderWidth--sm);
+  border-color: #1565c0;
+  border-radius: 4px;
+  padding: 8px 22px;
+  letter-spacing: 0.1em;
+  font-weight: 500;
+  font-size: 0.9375rem;
+  line-height: 1.75;
+  text-transform: uppercase;
+}
 h1#kc-page-title {
   margin-top: 10px;
   font-size: 1.5rem;
