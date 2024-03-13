@@ -47,6 +47,7 @@
                     </form>
                 </#if>
             </div>
+            
         </div>
     <#elseif section == "info">
         <#if realm.password && realm.registrationAllowed && !registrationDisabled??>
