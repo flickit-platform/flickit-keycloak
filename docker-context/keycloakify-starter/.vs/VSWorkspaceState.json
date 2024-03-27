@@ -1,0 +1,10 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\src",
+    "\\src\\keycloak-theme",
+    "\\src\\keycloak-theme\\login"
+  ],
+  "SelectedNode": "\\src\\keycloak-theme\\login\\Template.tsx",
+  "PreviewInSolutionExplorer": false
+}

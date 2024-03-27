@@ -1,0 +1,113 @@
+.my-color {
+  color: #0a2342;
+}
+
+.my-font {
+  font-family: "Work Sans";
+}
+
+.my-root-class {
+  background: white;
+}
+
+.my-root-class body {
+  /* background: url(./assets/background.svg) no-repeat center center fixed; */
+  background: #edfcfc;
+  overflow: hidden;
+}
+
+.right-column {
+  background: url(./assets/background.svg) no-repeat;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+  justify-content: center;
+  padding: 64px;
+  width: 40%;
+  height: 100vh;
+}
+.right-column div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+}
+.right-column h1 {
+  font-size: 32px;
+  font-weight: 900;
+  color: #edfcfc;
+  /* text-align: center;
+  width: 100%; */
+}
+.right-column span {
+  font-size: 16px;
+  font-weight: 200;
+  color: #edfcfc;
+  /* text-align: center;
+  width: 100%; */
+}
+.right-column img {
+  width: 80px;
+}
+
+.test {
+  width: 50%;
+  padding: 64px;
+  display: flex;
+  flex-direction: column;
+  /* text-align: center; */
+  gap: 64px;
+}
+.input-container {
+  /* background: #0a2342; */
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  gap: 16px;
+  align-items: center;
+  padding: 0 48px;
+}
+.input-container label {
+  color: #3b4f68;
+  font-size: 16px;
+  font-weight: 600;
+}
+.input-container input {
+  border-radius: 8px;
+  min-width: 250px;
+  border: transparent;
+  padding: 6px 8px;
+}
+.input-container input:focus {
+  outline: none;
+  border: 1px solid #9da7b3;
+  box-shadow: 0px 1px 8px #00000033;
+}
+.input-buton-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+}
+.reset-password-text a {
+  color: #1cc2c4;
+}
+.input-button-primary {
+  background: #1cc2c4;
+  border-radius: 100px;
+  padding: 8px 64px;
+  border: transparent;
+  box-shadow: 0px 1px 2px #00000033;
+  color: #e3f5f5;
+}
+.input-button-primary:hover {
+  box-shadow: 0px 1px 8px #00000033;
+}
+.input-remember-me{
+	display: flex;
+	justify-content: center;
+	margin-top: 32px;
+	width: 100%;
+}
