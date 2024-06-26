@@ -3,7 +3,7 @@ name: flickit-keycloak ci-cd
 on:
   push:
     branches:
-      - 'main'
+      - '*'
 
     tags:
       - 'v*'
