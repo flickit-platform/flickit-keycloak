@@ -35,7 +35,7 @@ export default function LoginResetPassword(
         method="post"
         style={{ display: "flex", flexDirection: "column", gap: 24 }}
       >
-        <div id="kc-form-wrapper" className="reset-passwordf-form">
+        <div id="kc-form-wrapper" className="reset-password-form">
           <div
             style={{
               fontFamily: "Ubuntu",
