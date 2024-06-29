@@ -108,7 +108,7 @@ export default function Template(props: TemplateProps<KcContext, I18n>) {
               className={getClassName("kcHeaderWrapperClass")}
               style={{
                 fontFamily: "Sansation",
-                fontSize: "2.8rem",
+                fontSize: "2.4rem",
                 fontWeight: "bold",
                 textShadow: "0px 1px 2px #0A2342",
                 textAlign: "center",

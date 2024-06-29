@@ -27,6 +27,7 @@ html {
 .form-horizontal .form-group {
   margin-right: 0px;
   margin-left: 0px;
+  text-align: left;
 }
 
 .reset-password-form {
@@ -41,7 +42,7 @@ html {
   align-items: end;
   justify-content: center;
   padding: 64px;
-  width: 700px;
+  width: 50%;
   height: 100vh;
 }
 
@@ -229,6 +230,10 @@ html {
   background-color: transparent !important;
 }
 
+a.zocial {
+  box-shadow: none !important;
+}
+
 .kcFormSocialAccountListClass {
   display: flex;
   flex-direction: row;
@@ -262,6 +267,7 @@ html {
   display: flex;
   flex-direction: column;
   padding: 20px;
+  width: 50%;
 }
 
 .logo-container {
@@ -424,5 +430,11 @@ html {
   .col-xs-8,
   .col-xs-9 {
     padding: 0;
+  }
+
+  .form-container {
+    max-height: calc(100vh - 28rem);
+    overflow: auto;
+    overflow-x: hidden;
   }
 }
