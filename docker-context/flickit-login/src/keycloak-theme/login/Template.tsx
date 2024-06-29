@@ -86,7 +86,7 @@ export default function Template(props: TemplateProps<KcContext, I18n>) {
             tabIndex={6}
             href={
               kcContext.pageId === "login.ftl"
-                ? url.registrationUrl
+                ? (url as any).registrationUrl
                 : url.loginUrl
             }
           >
@@ -346,7 +346,7 @@ export default function Template(props: TemplateProps<KcContext, I18n>) {
               tabIndex={6}
               href={
                 kcContext.pageId === "login.ftl"
-                  ? url.registrationUrl
+                  ? (url as any).registrationUrl
                   : url.loginUrl
               }
             >
