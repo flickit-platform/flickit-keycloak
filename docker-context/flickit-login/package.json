@@ -1,8 +1,7 @@
 {
-  "name": "keycloakify-starter",
+  "name": "Flickit",
   "homepage": "https://starter.keycloakify.dev",
   "version": "6.1.3",
-  "description": "A starter/demo project for keycloakify",
   "repository": {
     "type": "git",
     "url": "git://github.com/codegouvfr/keycloakify-starter.git"
