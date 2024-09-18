@@ -14,5 +14,5 @@ COPY ./theme /opt/keycloak/themes/
 # NOTE: If you are using a version of Keycloak prior to 23 you must use
 # the retrocompat-*.jar. Look inside your target directory there is two jars file
 # one *.jar and the other retrocompat-*.jar
-COPY --from=keycloakify_jar_builder /opt/app/dist_keycloak/target/keycloakify-starter-keycloak-theme-6.1.3.jar /opt/keycloak/providers/
+COPY --from=keycloakify_jar_builder /opt/app/dist_keycloak/target/platform-keycloak-theme-6.1.3.jar /opt/keycloak/providers/
 RUN /opt/keycloak/bin/kc.sh build
