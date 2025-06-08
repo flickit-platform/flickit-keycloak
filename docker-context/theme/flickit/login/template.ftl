@@ -50,10 +50,10 @@
           html, body {
             direction: rtl !important;
             text-align: right !important;
-            font-family: 'Vazir', 'Tahoma', 'Arial', sans-serif !important;
+            font-family: 'VazirMatn', 'Tahoma', 'Arial', sans-serif !important;
           }
           * {
-            font-family: 'Vazir', 'Tahoma', 'Arial', sans-serif !important;
+            font-family: 'VazirMatn', 'Tahoma', 'Arial', sans-serif !important;
           }
         </style>
     <#else>

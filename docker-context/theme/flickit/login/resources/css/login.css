@@ -443,16 +443,78 @@
     .login-pf .container {
       padding-top: 15px;
       padding-bottom: 15px;
-    }
-  
-    #kc-locale {
-      position: absolute;
-      width: 200px;
-      top: 20px;
-      right: 20px;
-      text-align: right;
-      z-index: 9999;
-    }
+      }
+    
+      #kc-locale-wrapper {
+        display: flex;
+        align-items: center;
+        position: absolute;
+        top: 38px;
+        right: 64px;
+        z-index: 30;
+      }
+      
+      #kc-current-locale-link {
+        display: flex;
+        align-items: center;
+        background: #fff;
+        border: 1.5px solid #e2e8f0;
+        border-radius: 24px;
+        font-size: 17px;
+        color: #22324d;
+        font-weight: 600;
+        padding: 0 18px 0 12px;
+        height: 44px;
+        min-width: 78px;
+        box-shadow: 0 1px 8px 0 #d1d5db30;
+        cursor: pointer;
+        transition: border 0.18s;
+        text-decoration: none;
+        position: relative;
+        gap: 9px;
+      }
+      
+      #kc-current-locale-link:before {
+        content: "";
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        margin-left: 9px;
+        background: url('data:image/svg+xml;utf8,<svg fill="none" stroke="black" stroke-width="1.3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 22"><circle cx="11" cy="11" r="10" stroke="%23258cfb"/><ellipse cx="11" cy="11" rx="5" ry="10" stroke="%23258cfb"/><line x1="1" y1="11" x2="21" y2="11" stroke="%23258cfb"/><line x1="11" y1="1" x2="11" y2="21" stroke="%23258cfb"/></svg>')
+          no-repeat center/cover;
+        vertical-align: middle;
+      }
+      
+      #kc-current-locale-link:after {
+        content: "▼";
+        font-size: 11px;
+        margin-right: 8px;
+        color: #3178fa;
+      }
+      
+      .pf-c-dropdown__menu {
+        margin-top: 8px !important;
+        border-radius: 13px !important;
+        background: #fff;
+        box-shadow: 0 8px 32px #6c758433 !important;
+        min-width: 110px;
+        border: 1px solid #e0e6ef;
+        right: 0 !important;
+        left: unset !important;
+      }
+      
+      .pf-c-dropdown__menu-item {
+        padding: 13px 24px;
+        font-size: 15px;
+        border-radius: 10px;
+        color: #0c1933 !important;
+        transition: background 0.14s, color 0.18s;
+      }
+      .pf-c-dropdown__menu-item:hover {
+        background: #eef5ff !important;
+        color: #258cfb !important;
+      }
+      
   }
   
   @media (min-height: 646px) {
