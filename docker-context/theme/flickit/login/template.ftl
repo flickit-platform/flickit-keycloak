@@ -45,26 +45,6 @@
             );
         </script>
     </#if>
-    <#if locale.currentLanguageTag == "fa">
-        <style>
-          html, body {
-            direction: rtl !important;
-            text-align: right !important;
-            font-family: 'VazirMatn', 'Tahoma', 'Arial', sans-serif !important;
-          }
-          * {
-            font-family: 'VazirMatn', 'Tahoma', 'Arial', sans-serif !important;
-          }
-        </style>
-    <#else>
-        <style>
-          html, body {
-            direction: ltr !important;
-            text-align: left !important;
-            font-family: 'OpenSans', 'Arial', sans-serif !important;
-          }
-        </style>
-    </#if>
 </head>
 
 <body class="${properties.kcBodyClass!}">
