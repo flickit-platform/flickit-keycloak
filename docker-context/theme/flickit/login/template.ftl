@@ -160,6 +160,15 @@
 
     </div>
   </div>
+  <script>
+  (function() {
+    var lang = "${locale.currentLanguageTag}";
+    if (lang) {
+      localStorage.setItem('lang', lang);
+    }
+  })();
+</script>
+
 </body>
 </html>
 </#macro>
