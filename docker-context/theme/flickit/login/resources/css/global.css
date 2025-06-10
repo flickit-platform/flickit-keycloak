@@ -2,7 +2,6 @@
    This clashes with the "keycloak-bg.png' background defined on the body below.
    Therefore the Patternfly background must be set to none. */
 @import "../fonts/fonts.css";
-
 html[lang="fa"] body {
   direction: rtl !important;
   font-family: "VazirMatn";
@@ -17,6 +16,20 @@ html[lang="en"] body {
 
 .login-pf {
   background: none;
+}
+
+.login-pf-page-header {
+  margin-bottom: 0px;
+  text-align: center;
+}
+
+#kc-locale-wrapper {
+  margin-top: -70px;
+  margin-inline: -20px;
+}
+
+.pf-c-dropdown__menu {
+  margin-top: -70px;
 }
 
 .login-pf body {
@@ -61,6 +74,17 @@ p.instruction {
   margin-inline-start: 2px;
 }
 
+.pf-c-button.pf-m-primary {
+  background: #2466a8;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 3px 1px -2px,
+    rgba(0, 0, 0, 0.14) 0px 2px 2px 0px, rgba(0, 0, 0, 0.12) 0px 1px 5px 0px;
+  border-radius: 4px;
+}
+
+.pf-c-button.pf-m-primary:hover {
+  background: #1b4d7e;
+}
+
 input#kc-login {
   border: solid var(--pf-global--BorderWidth--sm);
   border-color: #1565c0;
@@ -100,7 +124,7 @@ h1#kc-page-title {
 }
 
 #kc-locale-dropdown a {
-  color: var(--pf-global--Color--200);
+  /* color: white; */
   text-align: right;
   font-size: var(--pf-global--FontSize--sm);
 }
@@ -405,6 +429,8 @@ ul#kc-totp-supported-apps {
   position: relative;
   z-index: 20;
   font-family: inherit;
+  margin-top: -70px;
+  margin-right: -40px;
 }
 
 #kc-locale-wrapper[lang="fa"] {
@@ -414,16 +440,15 @@ ul#kc-totp-supported-apps {
   position: relative;
   z-index: 20;
   font-family: inherit;
+  margin-top: -70px;
+  margin-left: -40px;
 }
 
 #kc-current-locale-link {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #fff;
-  border-radius: 24px;
   font-size: 16px;
-  color: #3178fa;
   font-weight: 600;
   padding: 0 18px 0 12px;
   height: 44px;
@@ -432,6 +457,7 @@ ul#kc-totp-supported-apps {
   position: relative;
   outline: none;
   user-select: none;
+  color: white;
 }
 
 #kc-current-locale-link:before {
@@ -439,23 +465,29 @@ ul#kc-totp-supported-apps {
   display: inline-block;
   width: 22px;
   height: 22px;
-  margin-inline-end: 10px;
-  background: url('data:image/svg+xml;utf8,<svg fill="none" stroke="black" stroke-width="1.3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 22"><circle cx="11" cy="11" r="10" stroke="%23258cfb"/><ellipse cx="11" cy="11" rx="5" ry="10" stroke="%23258cfb"/><line x1="1" y1="11" x2="21" y2="11" stroke="%23258cfb"/><line x1="11" y1="1" x2="11" y2="21" stroke="%23258cfb"/></svg>')
-    center/contain no-repeat;
+  margin-inline-end: 4px;
+  background: url("../img/language.svg");
   vertical-align: middle;
 }
 
 #kc-current-locale-link:after {
-  content: "▼";
-  font-size: 11px;
-  margin-inline-start: 9px;
-  color: #3178fa;
+  content: "";
+  display: inline-block;
+  width: 22px;
+  height: 22px;
+  margin-inline-end: 4px;
+  background: url("../img/down.svg");
+  vertical-align: middle;
+}
+
+#pf-c-dropdown__menu {
+  margin-top: -60px;
+  margin-right: -40px;
 }
 
 #kc-current-locale-link:hover,
 #kc-current-locale-link:focus {
   border-color: #258cfb;
-  box-shadow: 0 2px 12px 0 #7fb7ff28;
 }
 
 @media (min-width: 768px) {
@@ -475,6 +507,10 @@ ul#kc-totp-supported-apps {
 }
 
 @media (max-width: 767px) {
+  #kc-current-locale-link{
+    color: black;
+  }
+
   .login-pf body {
     background: white;
   }
@@ -495,8 +531,10 @@ ul#kc-totp-supported-apps {
   }
 
   div.kc-logo-text {
+    background-image: url(../img/light-flickit.svg);
     margin: 0 auto;
     background-size: 100%;
+    margin-bottom: 80px;
   }
 
   #kc-form {
