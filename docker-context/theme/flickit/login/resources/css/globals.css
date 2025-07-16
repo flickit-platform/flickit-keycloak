@@ -4,7 +4,7 @@
 @import "../fonts/fonts.css";
 html[lang="fa"] body {
   direction: rtl !important;
-  font-family: "VazirMatn";
+  font-family: "Sahel";
   text-align: right;
 }
 
@@ -13,6 +13,41 @@ html[lang="en"] body {
   font-family: "OpenSans";
   text-align: left;
 }
+
+html[lang="fa"] .checkbox input[type="checkbox"],
+html[lang="fa"] .checkbox-inline input[type="checkbox"],
+html[lang="fa"] .radio input[type="radio"],
+html[lang="fa"] .radio-inline input[type="radio"] {
+  position: absolute;
+  margin-right: -20px;
+}
+
+html[lang="en"] .checkbox input[type="checkbox"],
+html[lang="en"] .checkbox-inline input[type="checkbox"],
+html[lang="en"] .radio input[type="radio"],
+html[lang="en"] .radio-inline input[type="radio"] {
+  position: absolute;
+  margin-left: -20px;
+}
+
+html[lang="fa"] .checkbox label,
+html[lang="fa"] .radio label {
+  min-height: 20px;
+  padding-right: 20px;
+  margin-bottom: 0;
+  font-weight: 400;
+  cursor: pointer;
+}
+
+html[lang="en"] .checkbox label,
+html[lang="en"] .radio label {
+  min-height: 20px;
+  padding-left: 20px;
+  margin-bottom: 0;
+  font-weight: 400;
+  cursor: pointer;
+}
+
 
 .login-pf {
   background: none;
