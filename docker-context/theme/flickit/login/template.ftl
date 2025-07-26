@@ -239,52 +239,43 @@
 </script>
 
 <script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const track = (label) => {
-      if (window.ppms && ppms.cm && typeof ppms.cm.api === "function") {
-        ppms.cm.api("Click", label);
-      }
-
-      if (window.clarity) {
-        clarity("set", "login_click", label);
-      }
-    };
-
-    const loginBtn = document.querySelector("#kc-login");
-    if (loginBtn) {
-      loginBtn.addEventListener("click", () => track("Login Button"));
+  const handleButtonClick = (label) => {
+    if (window.dataLayer) {
+      window.dataLayer.push({
+        event: "ppms.cm:trackEvent",
+        parameters: {
+          category: "Button",
+          action: "Click",
+          name: label,
+        },
+      });
     }
 
-    const googleBtn = document.querySelector("#social-google");
-    if (googleBtn) {
-      googleBtn.addEventListener("click", () => track("Login with Google"));
+    if (window.clarity) {
+      clarity("set", "login_click", label);
     }
+  };
 
-    const githubBtn = document.querySelector("#social-github");
-    if (githubBtn) {
-      githubBtn.addEventListener("click", () => track("Login with GitHub"));
-    }
+  const loginBtn = document.querySelector("#kc-login");
+  if (loginBtn) loginBtn.onclick = () => handleButtonClick("Login Button");
 
-    const registerLink = document.querySelector('#kc-registration a');
-    if (registerLink) {
-      registerLink.addEventListener("click", () => track("Register Link"));
-    }
+  const googleBtn = document.querySelector("#social-google");
+  if (googleBtn) googleBtn.onclick = () => handleButtonClick("Login with Google");
 
-    const forgotLink = document.querySelector('a[href*="reset-credentials"]');
-    if (forgotLink) {
-      forgotLink.addEventListener("click", () => track("Forgot Password Link"));
-    }
+  const githubBtn = document.querySelector("#social-github");
+  if (githubBtn) githubBtn.onclick = () => handleButtonClick("Login with GitHub");
 
-    const registerButton = document.querySelector('#kc-register-form input[type="submit"]');
-    if (registerButton) {
-      registerButton.addEventListener("click", () => track("Register Submit Button"));
-    }
+  const registerLink = document.querySelector('#kc-registration a');
+  if (registerLink) registerLink.onclick = () => handleButtonClick("Register Link");
 
-    const backToLoginLink = document.querySelector('#kc-form-options a[href*="authenticate"]');
-    if (backToLoginLink) {
-      backToLoginLink.addEventListener("click", () => track("Back to Login Link"));
-    }
-  });
+  const forgotLink = document.querySelector('a[href*="reset-credentials"]');
+  if (forgotLink) forgotLink.onclick = () => handleButtonClick("Forgot Password Link");
+
+  const registerButton = document.querySelector('#kc-register-form input[type="submit"]');
+  if (registerButton) registerButton.onclick = () => handleButtonClick("Register Submit Button");
+
+  const backToLoginLink = document.querySelector('#kc-form-options a[href*="authenticate"]');
+  if (backToLoginLink) backToLoginLink.onclick = () => handleButtonClick("Back to Login Link");
 </script>
 
 
