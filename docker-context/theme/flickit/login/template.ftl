@@ -170,11 +170,20 @@
 </script>
 <script>
   // Clarity
-  (function(c,l,a,r,i,t,y){
-      c[a]=c[a]||function(){ (c[a].q=c[a].q||[]).push(arguments)};
-      t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/YOUR_CLARITY_ID";
-      y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-  })(window, document, "clarity", "sks5r44u0z");
+   (function (c, l, a, r, i, t, y) {
+    c[a] = c[a] || function () {
+    (c[a].q = c[a].q ?? []).push(arguments);
+    };
+    const scriptElement = l.createElement(r);
+    scriptElement.async = 1;
+    scriptElement.src = "https://www.clarity.ms/tag/" + i;
+    const firstScriptElement = l.getElementsByTagName(r)[0];
+    firstScriptElement.parentNode.insertBefore(
+    scriptElement,
+    firstScriptElement,
+    );
+    window.clarity("consent");
+    })(window, document, "clarity", "script", "sks5r44u0z");
 </script>
 
 <script type="text/javascript">
