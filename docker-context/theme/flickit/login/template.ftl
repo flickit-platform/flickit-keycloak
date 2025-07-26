@@ -1,6 +1,6 @@
 <#macro registrationLayout bodyClass="" displayInfo=false displayMessage=true displayRequiredFields=false>
 <!DOCTYPE html>
-<html class="${properties.kcHtmlClass!}"<#if realm.internationalizationEnabled> lang="${locale.currentLanguageTag}"</#if>>
+<html class="${properties.kcHtmlClass!}"<#if realm.internationalizationEnabled && locale?? && locale.currentLanguageTag??> lang="${locale.currentLanguageTag}"</#if>>
 
 <head>
     <meta charset="utf-8">
@@ -169,51 +169,62 @@
   })();
 </script>
 <script>
-  // Clarity
-   (function (c, l, a, r, i, t, y) {
-    c[a] = c[a] || function () {
-    (c[a].q = c[a].q ?? []).push(arguments);
-    };
-    const scriptElement = l.createElement(r);
-    scriptElement.async = 1;
-    scriptElement.src = "https://www.clarity.ms/tag/" + i;
-    const firstScriptElement = l.getElementsByTagName(r)[0];
-    firstScriptElement.parentNode.insertBefore(
-    scriptElement,
-    firstScriptElement,
-    );
-    window.clarity("consent");
-    })(window, document, "clarity", "script", "sks5r44u0z");
-</script>
+  (function () {
+    const hostname = window.location.hostname;
 
-<script type="text/javascript">
-  (function(window, document, dataLayerName, id) {
-    window[dataLayerName] = window[dataLayerName] || [];
-    window[dataLayerName].push({
-      start: new Date().getTime(),
-      event: "stg.start"
-    });
+    const isStage =
+      hostname.includes("stage") ||
+      hostname.includes("local");
 
-    var firstScript = document.getElementsByTagName('script')[0];
-    var tagScript = document.createElement('script');
-    var queryParams = [];
+    const clarityId = isStage
+      ? "sks5r44u0z" 
+      : "sl0ebc8odl"; 
 
-    if (dataLayerName !== "dataLayer") {
-      queryParams.push("data_layer_name=" + dataLayerName);
-    }
+    const piwikId = isStage
+      ? "3e5fc57f-6d22-4ad0-a1fd-6bd4cd47e200" 
+      : "90225fa8-6ec7-4978-8dc4-c7684b977a40";
 
-    var queryString = queryParams.length > 0 ? ("?" + queryParams.join("&")) : "";
-    tagScript.async = true;
-    tagScript.src = "https://flickit.containers.piwik.pro/" + id + ".js" + queryString;
-    firstScript.parentNode.insertBefore(tagScript, firstScript);
+    // -------- Microsoft Clarity --------
+    (function (c, l, a, r, i, t, y) {
+      c[a] = c[a] || function () {
+        (c[a].q = c[a].q ?? []).push(arguments);
+      };
+      const scriptElement = l.createElement(r);
+      scriptElement.async = 1;
+      scriptElement.src = "https://www.clarity.ms/tag/" + i;
+      const firstScriptElement = l.getElementsByTagName(r)[0];
+      firstScriptElement.parentNode.insertBefore(scriptElement, firstScriptElement);
+      window.clarity("consent");
+    })(window, document, "clarity", "script", clarityId);
 
-    (function(context, namespace, modules) {
-      context[namespace] = context[namespace] || {};
-      for (var i = 0; i < modules.length; i++) {
-        (function(moduleName) {
+    // -------- Piwik Pro --------
+    (function (window, document, dataLayerName, id) {
+      window[dataLayerName] = window[dataLayerName] || [];
+      window[dataLayerName].push({
+        start: new Date().getTime(),
+        event: "stg.start"
+      });
+
+      const firstScript = document.getElementsByTagName("script")[0];
+      const tagScript = document.createElement("script");
+      const queryParams = [];
+
+      if (dataLayerName !== "dataLayer") {
+        queryParams.push("data_layer_name=" + dataLayerName);
+      }
+
+      const queryString = queryParams.length > 0 ? "?" + queryParams.join("&") : "";
+      tagScript.async = true;
+      tagScript.src = "https://flickit.containers.piwik.pro/" + id + ".js" + queryString;
+      firstScript.parentNode.insertBefore(tagScript, firstScript);
+
+      (function (context, namespace, modules) {
+        context[namespace] = context[namespace] || {};
+        for (let i = 0; i < modules.length; i++) {
+          const moduleName = modules[i];
           context[namespace][moduleName] = context[namespace][moduleName] || {};
-          context[namespace][moduleName].api = context[namespace][moduleName].api || function() {
-            var args = [].slice.call(arguments, 0);
+          context[namespace][moduleName].api = context[namespace][moduleName].api || function () {
+            const args = [].slice.call(arguments, 0);
             if (typeof args[0] === "string") {
               window[dataLayerName].push({
                 event: namespace + "." + moduleName + ":" + args[0],
@@ -221,11 +232,10 @@
               });
             }
           };
-        })(modules[i]);
-      }
-    })(window, "ppms", ["tm", "cm"]);
-
-  })(window, document, 'dataLayer', '3e5fc57f-6d22-4ad0-a1fd-6bd4cd47e200');
+        }
+      })(window, "ppms", ["tm", "cm"]);
+    })(window, document, "dataLayer", piwikId);
+  })();
 </script>
 
 <script>
