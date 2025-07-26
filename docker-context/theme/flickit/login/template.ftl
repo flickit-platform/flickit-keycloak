@@ -183,7 +183,7 @@
     firstScriptElement,
     );
     window.clarity("consent");
-    })(window, document, "clarity", "script", "${env.PLATFORM_CLARITY_KEY}");
+    })(window, document, "clarity", "script", "${env.KEYCLOAK_CLARITY_KEY}");
 </script>
 
 <script type="text/javascript">
@@ -225,7 +225,7 @@
       }
     })(window, "ppms", ["tm", "cm"]);
 
-  })(window, document, 'dataLayer', "${env.PLATFORM_PIWIK_KEY}");
+  })(window, document, 'dataLayer', "${env.KEYCLOAK_PIWIK_KEY}");
 </script>
 
 <script>
