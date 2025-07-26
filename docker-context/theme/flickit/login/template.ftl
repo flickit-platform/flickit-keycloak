@@ -168,6 +168,106 @@
     }
   })();
 </script>
+<script>
+  // Clarity
+  (function(c,l,a,r,i,t,y){
+      c[a]=c[a]||function(){ (c[a].q=c[a].q||[]).push(arguments)};
+      t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/YOUR_CLARITY_ID";
+      y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+  })(window, document, "clarity", "sks5r44u0z");
+</script>
+
+<script type="text/javascript">
+  (function(window, document, dataLayerName, id) {
+    window[dataLayerName] = window[dataLayerName] || [];
+    window[dataLayerName].push({
+      start: new Date().getTime(),
+      event: "stg.start"
+    });
+
+    var firstScript = document.getElementsByTagName('script')[0];
+    var tagScript = document.createElement('script');
+    var queryParams = [];
+
+    if (dataLayerName !== "dataLayer") {
+      queryParams.push("data_layer_name=" + dataLayerName);
+    }
+
+    var queryString = queryParams.length > 0 ? ("?" + queryParams.join("&")) : "";
+    tagScript.async = true;
+    tagScript.src = "https://flickit.containers.piwik.pro/" + id + ".js" + queryString;
+    firstScript.parentNode.insertBefore(tagScript, firstScript);
+
+    (function(context, namespace, modules) {
+      context[namespace] = context[namespace] || {};
+      for (var i = 0; i < modules.length; i++) {
+        (function(moduleName) {
+          context[namespace][moduleName] = context[namespace][moduleName] || {};
+          context[namespace][moduleName].api = context[namespace][moduleName].api || function() {
+            var args = [].slice.call(arguments, 0);
+            if (typeof args[0] === "string") {
+              window[dataLayerName].push({
+                event: namespace + "." + moduleName + ":" + args[0],
+                parameters: args.slice(1)
+              });
+            }
+          };
+        })(modules[i]);
+      }
+    })(window, "ppms", ["tm", "cm"]);
+
+  })(window, document, 'dataLayer', '3e5fc57f-6d22-4ad0-a1fd-6bd4cd47e200');
+</script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const track = (label) => {
+      if (window.ppms && ppms.cm && typeof ppms.cm.api === "function") {
+        ppms.cm.api("Click", label);
+      }
+
+      if (window.clarity) {
+        clarity("set", "login_click", label);
+      }
+    };
+
+    const loginBtn = document.querySelector("#kc-login");
+    if (loginBtn) {
+      loginBtn.addEventListener("click", () => track("Login Button"));
+    }
+
+    const googleBtn = document.querySelector("#social-google");
+    if (googleBtn) {
+      googleBtn.addEventListener("click", () => track("Login with Google"));
+    }
+
+    const githubBtn = document.querySelector("#social-github");
+    if (githubBtn) {
+      githubBtn.addEventListener("click", () => track("Login with GitHub"));
+    }
+
+    const registerLink = document.querySelector('#kc-registration a');
+    if (registerLink) {
+      registerLink.addEventListener("click", () => track("Register Link"));
+    }
+
+    const forgotLink = document.querySelector('a[href*="reset-credentials"]');
+    if (forgotLink) {
+      forgotLink.addEventListener("click", () => track("Forgot Password Link"));
+    }
+
+    const registerButton = document.querySelector('#kc-register-form input[type="submit"]');
+    if (registerButton) {
+      registerButton.addEventListener("click", () => track("Register Submit Button"));
+    }
+
+    const backToLoginLink = document.querySelector('#kc-form-options a[href*="authenticate"]');
+    if (backToLoginLink) {
+      backToLoginLink.addEventListener("click", () => track("Back to Login Link"));
+    }
+  });
+</script>
+
 
 </body>
 </html>
