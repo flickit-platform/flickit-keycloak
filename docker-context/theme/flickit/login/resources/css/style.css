@@ -1,7 +1,7 @@
 /* Patternfly CSS places a "bg-login.jpg" as the background on this ".login-pf" class.
    This clashes with the "keycloak-bg.png' background defined on the body below.
    Therefore the Patternfly background must be set to none. */
-@import "../fonts/fonts.css";
+@import "../fonts/font.css";
 html[lang="fa"] body {
   direction: rtl !important;
   font-family: "Sahel";
