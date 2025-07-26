@@ -183,7 +183,7 @@
     firstScriptElement,
     );
     window.clarity("consent");
-    })(window, document, "clarity", "script", "sks5r44u0z");
+    })(window, document, "clarity", "script", "${env.KEYCLOAK_CLARITY_KEY}");
 </script>
 
 <script type="text/javascript">
@@ -225,7 +225,7 @@
       }
     })(window, "ppms", ["tm", "cm"]);
 
-  })(window, document, 'dataLayer', '3e5fc57f-6d22-4ad0-a1fd-6bd4cd47e200');
+  })(window, document, 'dataLayer', "${env.KEYCLOAK_PIWIK_KEY}");
 </script>
 
 <script>
