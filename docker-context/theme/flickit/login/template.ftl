@@ -276,6 +276,11 @@
 
   const backToLoginLink = document.querySelector('#kc-form-options a[href*="authenticate"]');
   if (backToLoginLink) backToLoginLink.onclick = () => handleButtonClick("Back to Login Link");
+
+  const resetPasswordForm = document.querySelector("#kc-reset-password-form");
+  if (resetPasswordForm) {
+    resetPasswordForm.addEventListener("submit", () => handleButtonClick("Reset Password Submit"));
+  }
 </script>
 
 
