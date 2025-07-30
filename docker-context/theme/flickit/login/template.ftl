@@ -160,14 +160,19 @@
 
     </div>
   </div>
-  <script>
-  (function() {
-    var lang = "${locale.currentLanguageTag}";
+ <script>
+  (function () {
+    var match = document.cookie.match(new RegExp("(^| )NEXT_LOCALE=([^;]+)"));
+    var lang = match ? decodeURIComponent(match[2]) : null;
+
     if (lang) {
-      localStorage.setItem('lang', lang);
+      localStorage.setItem("lang", lang);
+
+      var expires = new Date(Date.now() + 365 * 864e5).toUTCString();
+      document.cookie = "lang=" + encodeURIComponent(lang) + "; path=/; expires=" + expires + "; SameSite=Lax";
     }
   })();
-</script>
+  </script>
 <script>
   (function () {
     const hostname = window.location.hostname;
