@@ -161,6 +161,24 @@
     </div>
   </div>
   <script>
+  (function () {
+    var params = new URLSearchParams(window.location.search);
+    var lang = params.get("lang") || "en";
+
+    localStorage.setItem("lang", lang);
+
+    var redirectUrl = params.get("redirectTo");
+
+    if (redirectUrl) {
+      var redirect = new URL(redirectUrl);
+      redirect.searchParams.set("kc_locale", lang);
+
+      window.location.href = redirect.toString();
+    }
+  })();
+</script>
+
+  <script>
   (function() {
     var lang = "${locale.currentLanguageTag}";
     if (lang) {
