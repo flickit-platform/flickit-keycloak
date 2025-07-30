@@ -160,19 +160,32 @@
 
     </div>
   </div>
- <script>
+  <script>
   (function () {
-    var match = document.cookie.match(new RegExp("(^| )NEXT_LOCALE=([^;]+)"));
-    var lang = match ? decodeURIComponent(match[2]) : null;
+    var params = new URLSearchParams(window.location.search);
+    var lang = params.get("lang") || "en";
 
-    if (lang) {
-      localStorage.setItem("lang", lang);
+    localStorage.setItem("lang", lang);
 
-      var expires = new Date(Date.now() + 365 * 864e5).toUTCString();
-      document.cookie = "lang=" + encodeURIComponent(lang) + "; path=/; expires=" + expires + "; SameSite=Lax";
+    var redirectUrl = params.get("redirectTo");
+
+    if (redirectUrl) {
+      var redirect = new URL(redirectUrl);
+      redirect.searchParams.set("kc_locale", lang);
+
+      window.location.href = redirect.toString();
     }
   })();
-  </script>
+</script>
+
+  <script>
+  (function() {
+    var lang = "${locale.currentLanguageTag}";
+    if (lang) {
+      localStorage.setItem('lang', lang);
+    }
+  })();
+</script>
 <script>
   (function () {
     const hostname = window.location.hostname;
